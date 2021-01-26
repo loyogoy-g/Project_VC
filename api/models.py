@@ -16,14 +16,10 @@ class JuniorHigh(models.Model):
     ('10 Einstein', '10 Einstein'),
     ('10 Franklin', '10 Franklin'),
     ('10 Newton', '10 Newton'),
-    ('11 ABM', '11 ABM'),
-    ('11 GAS/HUMSS', '11 GAS/HUMSS'),
-    ('11 STEM', '11 STEM'),
-    ('12 ABM', '12 ABM'),
-    ('12 GAS/HUMSS', '12 GAS/HUMSS'),
-    ('12 STEM', '12 STEM')
   ]
     Name = models.CharField(max_length=100, unique=True)
+    Teacher = models.CharField(max_length=100, unique=True, null=True)
+    Student_id = models.CharField(max_length=100, unique=True,null=True)
     LRN = models.CharField(max_length=100, unique=True)
     Status = models.BooleanField(verbose_name="Block Access", default=False)
     Section = models.CharField(max_length=100, choices=choice)
@@ -81,6 +77,8 @@ class SeniorHigh(models.Model):
     ('12 STEM', '12 STEM')
   ]
     Name = models.CharField(max_length=100, unique=True)
+    Teacher = models.CharField(max_length=100, unique=True, null=True)
+    Student_id = models.CharField(max_length=100, unique=True,null=True)
     LRN = models.CharField(max_length=100, unique=True)
     Status = models.BooleanField(verbose_name="Block Access", default=False)
     Section = models.CharField(max_length=100, choices=choice)

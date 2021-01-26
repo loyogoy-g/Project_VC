@@ -30,7 +30,7 @@ class StudentSerializer(serializers.ModelSerializer):
     fourthgrade = FourthQuarterSerializer(many=True)
     class Meta:
         model = JuniorHigh
-        fields =["Name", "LRN", "Status", "Section", "Quarter", "firstgrade","secondgrade","thirdgrade","fourthgrade"]
+        fields =["Name","Student_id","Teacher", "LRN", "Status", "Section", "Quarter", "firstgrade","secondgrade","thirdgrade","fourthgrade"]
         depth = 1
 
     def create(self, validated_data):
@@ -64,5 +64,5 @@ class SHStudentSerializer(serializers.ModelSerializer):
     secondgrade = SHSecondQuarterSerializer(many=True)
     class Meta:
         model = SeniorHigh
-        fields =["Name", "LRN", "Status", "Section", "Quarter", "firstgrade","secondgrade",]
+        fields =["Name", "LRN", "Student_id","Teacher", "Status", "Section", "Quarter", "firstgrade","secondgrade",]
         depth = 1

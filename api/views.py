@@ -22,6 +22,49 @@ def studentData(request):
     serializer = StudentSerializer(student)
     return Response(serializer.data)
 
+
+@api_view(['POST']) 
+def real_api(request):
+    #{'lrn':lrn, 'level': seniorhigh or juniorhigh, 'student_id': student_id}
+    data = request.data
+    print(data['lrn'])
+    if data['level'] == 'SeniorHigh':
+        student = SeniorHigh.objects.get(LRN=data['lrn'])
+        serializer = SHStudentSerializer(student)
+        studentdata = serializer.data
+        if data['student_id'] == studentdata['Student_id']:
+            firstgrade = studentdata['firstgrade']
+            secondgrade = studentdata['secondgrade']
+            head = {'Name': studentdata['Name'], 'LRN': studentdata['LRN'], 'Teacher': studentdata['Student_id'], 'Status': studentdata['Status'], 'Section': studentdata['Section']}
+            grade = []
+            head['data'] = grade
+            for i in range(len(firstgrade)):
+                data = {'Subject': firstgrade[i]['Subject'], 'Data':[firstgrade[i]['Grade'], secondgrade[i]['Grade']]}
+                grade.append(data)
+            return JsonResponse(head)
+        else:
+            return JsonResponse({'message': 'wrong entry for student id'})
+
+        return Response(serializer.data)
+    elif data['level'] == 'JuniorHigh':
+        student = JuniorHigh.objects.get(LRN=data['lrn'])
+        serializer = StudentSerializer(student)
+        studentdata = serializer.data
+        if data['student_id'] == studentdata['Student_id']:
+            firstgrade = studentdata['firstgrade']
+            secondgrade = studentdata['secondgrade']
+            head = {'Name': studentdata['Name'], 'LRN': studentdata['LRN'], 'Teacher': studentdata['Student_id'], 'Status': studentdata['Status'], 'Section': studentdata['Section']}
+            grade = []
+            head['data'] = grade
+            for i in range(len(firstgrade)):
+                data = {'Subject': firstgrade[i]['Subject'], 'Data':[firstgrade[i]['Grade'], secondgrade[i]['Grade']]}
+                grade.append(data)
+            return JsonResponse(head)
+        else:
+            return JsonResponse({'message': 'wrong entry for student id'})
+    else:
+        return JsonResponse({'message': 'wrong entry for level'})
+
 @api_view(['POST'])
 def studentPush(request):
     serializer = StudentSerializer(data=request.data)
