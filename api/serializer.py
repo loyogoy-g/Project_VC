@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .models import JuniorHigh, FirstQuarter, SecondQuarter, ThirdQuarter, FourthQuarter
-from .models import SeniorHigh, SHFirstQuarter, SHSecondQuarter\
+from .models import SeniorHigh, SHFirstQuarter, SHSecondQuarter, Status
 
 
 class FirstQuarterSerializer(serializers.ModelSerializer):
@@ -44,6 +44,11 @@ class StudentSerializer(serializers.ModelSerializer):
         return student
 
 
+
+class AllStatus(serializers.ModelSerializer):
+    class Meta:
+        model = Status
+        fields =["Status"]
 
 
 

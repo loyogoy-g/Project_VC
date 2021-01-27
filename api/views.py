@@ -5,8 +5,8 @@ from rest_framework import status
 
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .serializer import StudentSerializer, SHStudentSerializer
-from .models import JuniorHigh, SeniorHigh
+from .serializer import StudentSerializer, SHStudentSerializer, AllStatus
+from .models import JuniorHigh, SeniorHigh, Status
 
 
 @api_view(['GET'])
@@ -14,6 +14,14 @@ def apiOverview(request):
 	tasks = JuniorHigh.objects.all().order_by('-id')
 	serializer = StudentSerializer(tasks, many=True)
 	return Response(serializer.data)
+
+
+@api_view(['POST'])
+def allstatus(request):
+	tasks = Status.objects.all().order_by('-id')
+	serializer = AllStatus(tasks, many=True)
+	return Response(serializer.data)
+
 
 @api_view(['POST'])
 def studentData(request):

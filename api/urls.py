@@ -3,6 +3,7 @@ from . import views
 
 urlpatterns = [
 	path('', views.apiOverview, name="api-overview"),
+	path('all/', views.allstatus, name="allstatus"),
 	path('student/', views.studentData, name="task-filter"),
 	path('v2/', views.real_api, name="real-api"),
 	path('senior', views.shapiOverview, name="shapi-overview"),
