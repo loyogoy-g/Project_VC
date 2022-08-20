@@ -18,7 +18,7 @@ class JuniorHigh(models.Model):
     ('10 Newton', '10 Newton'),
   ]
     Name = models.CharField(max_length=100, unique=True)
-    Teacher = models.CharField(max_length=100, unique=True, null=True)
+    Teacher = models.CharField(max_length=100, null=True)
     Student_id = models.CharField(max_length=100, unique=True,null=True)
     LRN = models.CharField(max_length=100, unique=True)
     Status = models.BooleanField(verbose_name="Block Access", default=False)
@@ -77,7 +77,7 @@ class SeniorHigh(models.Model):
     ('12 STEM', '12 STEM')
   ]
     Name = models.CharField(max_length=100, unique=True)
-    Teacher = models.CharField(max_length=100, unique=True, null=True)
+    Teacher = models.CharField(max_length=100, null=True)
     Student_id = models.CharField(max_length=100, unique=True,null=True)
     LRN = models.CharField(max_length=100, unique=True)
     Status = models.BooleanField(verbose_name="Block Access", default=False)

@@ -28,9 +28,9 @@ class FourthInline(admin.TabularInline):
 
 @admin.register(JuniorHigh)
 class StudentAdmin(admin.ModelAdmin):
-    list_display = ("Name", "LRN", "Status")
+    list_display = ("Name","LRN")
     inlines = [FirstInline, SecondtInline, ThirdInline, FourthInline]
-    list_filter = ("Status",)
+    list_filter = ("Status","Teacher",)
 
 
 class SHFirstInline(admin.TabularInline):
@@ -46,4 +46,4 @@ class SHSecondtInline(admin.TabularInline):
 class SHStudentAdmin(admin.ModelAdmin):
     list_display = ("Name", "LRN", "Status")
     inlines = [SHFirstInline, SHSecondtInline]
-    list_filter = ("Status",)
+    list_filter = ("Status","Teacher")
